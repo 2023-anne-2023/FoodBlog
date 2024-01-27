@@ -1,7 +1,7 @@
 CREATE TABLE category (
-  id SERIAL PRIMARY KEY,
-  title VARCHAR(255),
-  )
+  id INT,
+  title VARCHAR(255)
+  );
    INSERT INTO category(id)
  VALUES
  ('1'), ('2'), ('3');
@@ -9,39 +9,39 @@ CREATE TABLE category (
  VALUES
  ('smoothies'), ('mains'), ('desserts');
 
-  CREATE TABLE newpost (
+  /*CREATE TABLE newpost (
   category VARCHAR(255) REFERENCES category(title),
    content TEXT
   )
   /*https://www.sqlservercentral.com/forums/topic/foreign-key-references-multiple-tables*/
   CREATE TABLE comment (
-  id SERIAL PRIMARY KEY,
+  id INT ,
   CONSTRAINT fk1 FOREIGN KEY (post_id) REFERENCES smoothies (post_id),
   CONSTRAINT fk1 FOREIGN KEY (post_id) REFERENCES mains (post_id),
   CONSTRAINT fk2 FOREIGN KEY (post_id) REFERENCES desserts (post_id),
   content TEXT
-  )
+  )*/
   CREATE TABLE smoothies (
-  post_id SERIAL PRIMARY KEY,
+  post_id INT ,
   title VARCHAR(255),
   content TEXT ,
-  category_id INTEGER REFERENCES category(id),
-  comments TEXT 
-)
+ comments TEXT 
+);
+
+  /*category_id INTEGER REFERENCES category(id),*/
+ 
   CREATE TABLE mains (
-  post_id SERIAL PRIMARY KEY,
+  post_id INT ,
   title VARCHAR(255),
   content TEXT ,
-  category_id INTEGER REFERENCES category(id),
   comments TEXT 
-)
+);
   CREATE TABLE desserts (
-  post_id SERIAL PRIMARY KEY,
+  post_id INT,
   title VARCHAR(255),
   content TEXT ,
-  category_id INTEGER REFERENCES category(id),
   comments TEXT 
-)
+);
 INSERT INTO smoothies(post_id)
  VALUES
  ('1'), ('2'), ('3'), ('4'), ('5'), ('6'), ('7'), ('8'), ('9'), ('10');
@@ -165,7 +165,7 @@ Blend until smooth.'
  ('11'), ('12'), ('13'), ('14'), ('15'), ('16'), ('17'), ('18'), ('19'), ('20');
  INSERT INTO mains(title)
  VALUES
- ('Healthy salmon pasta',
+ ('Healthy salmon pasta'),
  'Scrambled-eggs-with-smoked-trout-and-creme-fraiche',
  'Cheesy-lemon-pepper-spaghetti',
  'Low-carb-sheet-pan-asparagus-frittata',
@@ -392,17 +392,17 @@ Spread a layer of half of the rice in a big vessel. Put keema, some coriander an
  ('21'), ('22'), ('23'), ('24'), ('25'), ('26'), ('27'), ('28'), ('29'), ('30');
   INSERT INTO desserts(title)
  VALUES
- ('Pistachio tiramisu',
- 'Cheesecake squares',
- 'Raspberry & pistachio parfait',
- 'Ultimate crème brûlée',
- 'Pine lime and caramel ice cream parfaits',
- 'Almond and Honey cake',
- 'Floral meringues with whipped yoghurt cream and roasted strawberries',
- 'Muhallabia (Middle Eastern milk pudding)',
- 'Rice pudding',
- 'Gingerbread brownies '
- );
+ ('Pistachio tiramisu'),
+ ('Cheesecake squares'),
+ ('Raspberry & pistachio parfait'),
+ ('Ultimate crème brûlée'),
+ ('Pine lime and caramel ice cream parfaits'),
+ ('Almond and Honey cake'),
+ ('Floral meringues with whipped yoghurt cream and roasted strawberries'),
+ ('Muhallabia (Middle Eastern milk pudding)'),
+ ('Rice pudding'),
+ ('Gingerbread brownies ');
+ 
   INSERT INTO desserts(content)
  VALUES
  ('Ingredients
@@ -428,8 +428,8 @@ Whisk the coffee, amaretto and 2 tbsp pistachio spread together in a shallow dis
 
 STEP 4
 Chill for 3-4 hrs, or overnight. Transfer to a serving plate, drizzle over the melted pistachio spread in a criss-cross pattern, and sprinkle the slivered pistachios around the edge. Will keep chilled for two days.
-',
- 'Ingredients
+'),
+ ('Ingredients
 100g butter
 250g digestive biscuits, crushed into fine crumbs
 500g full-fat soft cheese
@@ -449,8 +449,8 @@ STEP 2
 Beat the soft cheese, icing sugar, peanut butter and vanilla together in a bowl until well combined. Whisk the double cream in a separate bowl until it’s just holding its shape. Gently fold this into the peanut butter mixture, then spread over the biscuit base and smooth the surface using the back of a spoon. Chill for at least 1 hr to set. Will keep chilled for up to one day.
 
 STEP 3
-Meanwhile, tip the jelly cubes into a heatproof bowl and pour over 100ml boiling water. Stir to dissolve, then add the raspberries and sugar and stir, crushing the berries with the spoon. Push through a sieve into a jug, then pour this over the set cheesecake. Chill for at least 4hrs. Will keep chilled for up to two days. Run a knife around the sides, then use the overhanging parchment to lift the cheesecake onto a board. Cut into squares.',
- 'Ingredients
+Meanwhile, tip the jelly cubes into a heatproof bowl and pour over 100ml boiling water. Stir to dissolve, then add the raspberries and sugar and stir, crushing the berries with the spoon. Push through a sieve into a jug, then pour this over the set cheesecake. Chill for at least 4hrs. Will keep chilled for up to two days. Run a knife around the sides, then use the overhanging parchment to lift the cheesecake onto a board. Cut into squares.'),
+ ('Ingredients
 For the purée
 500g raspberries
 For the sabayon
@@ -478,8 +478,8 @@ STEP 4
 Next, in a clean bowl, whisk the cream until it has soft peaks. Add the purée and chopped pistachios, then fold in the yolks. Once combined, fold in half the whites. Add the raspberries with the remaining whites, gently fold together, then pour into the lined loaf tin. Put in the freezer overnight.
 
 STEP 5
-The next day, remove the parfait from the tin. Cover it completely in the blitzed pistachios, then place on a tray, cover in cling film and return it to the freezer. When you’re ready to serve, slice the parfait and serve with a few fresh raspberries.',
- 'Ingredients
+The next day, remove the parfait from the tin. Cover it completely in the blitzed pistachios, then place on a tray, cover in cling film and return it to the freezer. When you’re ready to serve, slice the parfait and serve with a few fresh raspberries.'),
+ ('Ingredients
 2 cartons double cream, 1 large (284ml) plus 1 small (142ml)
 100ml whole milk
 1 vanilla pod
@@ -527,8 +527,8 @@ When ready to serve, wipe round the top edge of the dishes, sprinkle 1½ tsp of 
 
 STEP 14
 Spray with a little water using a fine spray (the sort you buy in a craft shop) to just dampen the sugar – then use a blow torch to caramelise it. Hold the flame just above the sugar and keep moving it round and round until caramelised. Serve when the brûlée is firm, or within an hour or two.
-',
- 'INGREDIENTS
+'),
+ ('INGREDIENTS
 3/4 cup (30g) toasted coconut flakes
 1L caramel macadamia ice cream
 Finely grated zest of 3 limes
@@ -542,8 +542,8 @@ METHOD
 1.For the pine lime, preheat a woodfired oven or kitchen oven to 280°C/260°C fan-forced. Preheat a large cast-iron pan in the oven.
 2.Meanwhile, slice the pineapple in half lengthways, then slice each half lengthways into 4 long wedges. Thinly slice each strip crossways to produce small triangles, then transfer to a bowl. Add maple syrup and toss to coat. Carefully pour into preheated pan and roast for 10-12 minutes until golden.
 3.Carefully remove pan from oven and stir through lime juice. Set aside to cool to room temperature.
-4.Spoon half the pine lime among 6 serving glasses, then sprinkle with half the coconut. Top with large scoops of ice cream, then spoon over remaining pine lime. Sprinkle with remaining coconut and lime zest. Serve with lime wedges alongside, if desired, to squeeze over.',
- 'INGREDIENTS
+4.Spoon half the pine lime among 6 serving glasses, then sprinkle with half the coconut. Top with large scoops of ice cream, then spoon over remaining pine lime. Sprinkle with remaining coconut and lime zest. Serve with lime wedges alongside, if desired, to squeeze over.'),
+ ('INGREDIENTS
 180g unsalted butter, chilled, chopped
 5 eggs
 1/3 cup (75g) caster sugar
@@ -561,8 +561,8 @@ METHOD
 2.Place butter in a saucepan and cook over medium-high heat for 5 minutes or until nut brown. Remove from heat and cool to room temperature.
 3.Place eggs, sugar, vanilla and half the honey in a stand mixer with the whisk attachment and whisk for 5 minutes or until pale and doubled in volume. Fold in almond meal, flour, baking powder, lime zest and juice and a pinch of salt flakes. Pour in two-thirds of burnt butter (stir butter well before adding) and fold to combine. Pour into prepared pan and smooth top.
 4.Combine chopped almonds, remaining burnt butter, remaining 90g honey and a pinch of salt flakes in a bowl. Mix well then scatter evenly over batter. Bake on middle shelf, turning occasionally, for 40-45 minutes until golden brown and the centre springs back when lightly pressed. Drizzle over extra honey and cool on a wire rack in pan. Serve at room temperature.
-',
- 'INGREDIENTS
+'),
+ ('INGREDIENTS
 500g strawberries, hulled, quartered
 2 tbs caster sugar
 Juice of 1 lemon
@@ -585,8 +585,8 @@ METHOD
 3.Spoon 12 equal portions of meringue into 6cm-wide mounds on the prepared trays, leaving a little room between each mound for spreading. Use the back of a spoon to make a small indent in the centre of each mound to hold the cream.
 4.Place both trays in the oven and immediately reduce oven temperature to 100°C/80°C fan-forced. Bake for 1 hour 30 minutes to 2 hours (1 hour 30 minutes if you like a chewy meringue, 2 hours if you favour a crisp one). Turn off the oven and allow meringues to cool completely with the door slightly ajar (about 4 hours, or overnight).
 5.When ready to serve. Make the yoghurt cream. Place the cream, yoghurt, vanilla and sugar in a stand mixer fitted with the whisk attachment and whisk on medium-high speed until soft peaks form.
-6.To serve, top each meringue with a generous dollop of yoghurt cream and then a spoonful of roasted strawberries. Sprinkle over some edible flower petals, if using, and serve immediately.',
- 'INGREDIENTS
+6.To serve, top each meringue with a generous dollop of yoghurt cream and then a spoonful of roasted strawberries. Sprinkle over some edible flower petals, if using, and serve immediately.'),
+ ('INGREDIENTS
 50g finely ground white long-grain rice (ground in a pestle and mortar or a spice grinder)
 1 1/2 tbs cornflour
 4 cups (1L) cold milk
@@ -598,8 +598,8 @@ METHOD
 METHOD
 1.In a large bowl, mix together ground rice and cornflour. Add 1/4 cup (60ml) cold milk and sugar and stir to form a paste.
 2.Place the remaining milk in a medium saucepan over medium-high heat. Bring to the boil and whisk in the cornflour paste. Reduce heat to medium and simmer, whisking frequently, for 10-15 minutes until thickened. Add the almond meal and continue to stir for a further 5 minutes, then add the orange blossom water.
-3.Divide mixture among four 1-cup (250ml) capacity serving dishes or cups and refrigerate until cool. Scatter with chopped pistachios to serve.',
- 'INGREDIENTS
+3.Divide mixture among four 1-cup (250ml) capacity serving dishes or cups and refrigerate until cool. Scatter with chopped pistachios to serve.'),
+ ('INGREDIENTS
 Butter, softened, to grease
 100g arborio or carnaroli rice (from supermarkets)
 720ml pure (thin) cream
@@ -615,7 +615,7 @@ METHOD
 2.Place the rice in a sieve and wash well under cold running water. Drain.
 3.Place the cream, milk, sugar and vanilla pod and seeds in a small heavy-based saucepan over low heat. Stir until well combined and cook until hot. Discard the vanilla pod.
 4.Scatter the rice over prepared baking dish. Pour in the hot cream mixture and stir to combine. Place dish on a baking tray and bake, stirring every 30 minutes, for 1 hour 40 minutes or until rice is tender. Remove from oven and scatter with nutmeg. Increase oven to 190°C, return rice and bake, without stirring, for a further 15 minutes or until golden. Remove from oven and stand for 20 minutes.
- ','INGREDIENTS
+ '),('INGREDIENTS
 250g unsalted butter, chopped
 300g CADBURY Baking Dark Chocolate, chopped
 4 eggs

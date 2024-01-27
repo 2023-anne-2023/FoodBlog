@@ -3,3 +3,23 @@ body {
   color: #333;
   margin: 0;
 }
+.Logo {
+  margin: 0;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+}
+nav {
+  display: flex;
+  gap: 1rem;
+}
+header {
+  background-color: tomato;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 30vh;
+}
