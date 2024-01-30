@@ -23,3 +23,33 @@ header {
   align-items: center;
   height: 30vh;
 }
+.cover {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}
+p {
+  font-size: larger;
+  font-family: cursive;
+  margin: 40px;
+}
+.healthy {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}
+h1,
+Link {
+  color: tomato;
+}
+.simg,
+.mimg,
+.dimg {
+  gap: 15 rem;
+  flex-direction: row;
+  width: 20%;
+  padding: 8px;
+  margin-left: 3%;
+}
